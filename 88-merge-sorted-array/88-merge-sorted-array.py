@@ -4,10 +4,7 @@ class Solution:
         Do not return anything, modify nums1 in-place instead.
         """
         if len(nums1) == 0:
-            for num in nums2:
-                print(num)
-                nums1.append(num)
-                num1.pop()
+            nums1 = nums2
             return
         
         if len(nums1) == 1 and nums1[0] == 0:
