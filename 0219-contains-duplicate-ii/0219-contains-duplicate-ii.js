@@ -4,7 +4,6 @@
  * @return {boolean}
  */
 var containsNearbyDuplicate = function(nums, k) {
-    let minDiff = Infinity
     const numSet = {}
     
     for (let i = 0; i < nums.length; i++) {
@@ -13,13 +12,13 @@ var containsNearbyDuplicate = function(nums, k) {
         } else {
             const previousIndex = numSet[nums[i]]
             const diff = Math.abs(previousIndex - i)
-            if (diff < minDiff) {
-                minDiff = diff
+            if (diff <= k) {
+                return true 
             }
             
             numSet[nums[i]] = i
         }
     }
 
-    return minDiff <= k
+    return false
 };
