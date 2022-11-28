@@ -4,11 +4,11 @@
  */
 var containsDuplicate = function(nums) {
     let previous = new Set()
-    for (let num of nums) {
-        if (previous.has(num)) {
+    for (let i = 0; i <= nums.length - 1; i++) {
+        if (previous.has(nums[i])) {
             return true
         }
-        previous.add(num)
+        previous.add(nums[i])
     }
     return false
 };
