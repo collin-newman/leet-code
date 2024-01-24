@@ -3,17 +3,25 @@ function isAnagram(s: string, t: string): boolean {
       return false
     }
 
-    let tChar = t.split('');
+    const charMap = {};
 
     for (let i = 0; i < s.length; i++) {
-      const char = s[i];
-      const tCharIndex = tChar.indexOf(char)
-      if (tCharIndex !== -1) {
-        tChar.splice(tCharIndex, 1)
+      if (!charMap[s[i]]) {
+        charMap[s[i]] = 1;
       } else {
-         return false
+        charMap[s[i]]++;
       }
     }
 
-    return tChar.length === 0;
+    for (let i = 0; i < t.length; i++) {
+      if (charMap[t[i]]) {
+        charMap[t[i]]--;
+        if (charMap[t[i]] === -1) {
+          return false
+        }
+      } else {
+        return false
+      }
+    }
+    return true
 };
